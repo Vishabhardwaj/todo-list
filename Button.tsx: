@@ -1,0 +1,18 @@
+import React from 'react';
+
+interface Props {
+  onClick: () => void;
+  variant: 'small' | 'big';
+}
+
+const Button = ({ onClick, variant }: Props) => {
+  const classNames = `Button ${variant}`;
+
+  return (
+    <button className={classNames} onClick={onClick}>
+      {variant === 'big' ? 'Add' : 'Delete'}
+    </button>
+  );
+};
+
+export default Button;
