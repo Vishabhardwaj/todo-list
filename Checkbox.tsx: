@@ -1,0 +1,22 @@
+import React from 'react';
+
+interface Props {
+  label: string;
+  isChecked: boolean;
+  onChange: (isChecked: boolean) => void;
+}
+
+const Checkbox = ({ label, isChecked, onChange }: Props) => {
+  return (
+    <label className="Checkbox">
+      <input
+        type="checkbox"
+        checked={isChecked}
+        onChange={(event) => onChange(event.target.checked)}
+      />
+      {label}
+    </label>
+  );
+};
+
+export default Checkbox;
