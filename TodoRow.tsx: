@@ -1,0 +1,35 @@
+import React, { useState } from 'react';
+import Button from './Button';
+import Checkbox from './Checkbox';
+
+interface Props {
+  text: string;
+  onDelete: () => void;
+  onToggle: () => void;
+  isChecked: boolean;
+}
+
+const TodoRow = ({ text, onDelete, onToggle, isChecked }: Props) => {
+  const [isHovering, setIsHovering] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
+  return (
+    <li
+      className="TodoRow"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Checkbox label={text} isChecked={isChecked} onChange={onToggle} />
+      {isHovering && <Button variant="small" onClick={onDelete} />}
+    </li>
+  );
+};
+
+export default TodoRow;
